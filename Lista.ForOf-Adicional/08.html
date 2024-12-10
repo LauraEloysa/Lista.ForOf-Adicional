@@ -9,26 +9,55 @@
 
     // Entrada
     let cidades = ["Porto Alegre", "Curitiba", "Florianópolis", "Joinville", "Blumenau", "Gramado", "Santa Maria", "Londrina", "Itajaí"];
-    let estados = []; 
+    let SC = []; 
+    let PR = [];
+    let RS = [];
 
     // Processamento
     for (let cidade of cidades) {
         let estado = prompt(`Em qual estado está a cidade ${cidade}?`);
-        if (estado) {
-            if (!estados[estado]) {
-                estados[estado] = []; 
-            }
-            estados[estado].push(cidade); 
+        if(estado === "SC"){
+            SC.push(cidade)
+        }
+        else if(estado === "PR"){
+            PR.push(cidade)
+        }
+        else if(estado === "RS"){
+            RS.push(cidade)            
         }
     }
 
-    let estadosOrdenados = Object.entries(estados).sort((a, b) => b[1].length - a[1].length);
-
+   
     // Saída
-    let resultado = "";
-    for (let [estado, cidadesEstado] of estadosOrdenados) {
-        resultado += `Estado: ${estado}\nCidades: ${cidadesEstado.join(", ")}\n\n`;
+    if(SC.length > PR.length && PR.length > RS.length){
+        alert(`Cidades de SC: ${SC.join(", ")}\n
+        Cidades de PR: ${PR.join(", ")} \n
+        Cidades de RS: ${RS.join(", ")}`)
     }
-
-    alert(resultado);
+    else if(SC.length > RS.length && RS.length > PR.length){
+        alert(`Cidades de SC: ${SC.join(", ")}\n
+        Cidades de RS: ${RS.join(", ")} \n
+        Cidades de PR: ${PR.join(", ")}`)
+    }
+    else if(PR.length > SC.length && SC.length > RS.length){
+        alert(`Cidades de PR: ${PR.join(", ")}\n
+        Cidades de SC: ${SC.join(", ")} \n
+        Cidades de RS: ${RS.join(", ")}`)
+    }
+    else if(PR.length > RS.length && RS.length > SC.length){
+        alert(`Cidades de PR: ${PR.join(", ")}\n
+        Cidades de RS: ${RS.join(", ")} \n
+        Cidades de SC: ${SC.join(", ")}`)
+    }
+    else if(RS.length > SC.length && SC.length > PR.length){
+        alert(`Cidades de RS: ${RS.join(", ")}\n
+        Cidades de SC: ${SC.join(", ")} \n
+        Cidades de PR: ${PR.join(", ")}`)
+    }
+    else if(RS.length > PR.length && PR.length > SC.length){
+        alert(`Cidades de RS: ${RS.join(", ")}\n
+        Cidades de PR: ${PR.join(", ")} \n
+        Cidades de SC: ${SC.join(", ")}`)
+    }
+    
 </script>
